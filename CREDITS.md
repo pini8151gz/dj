@@ -25,3 +25,6 @@ All clips were downloaded from Wikimedia Commons, trimmed, cropped, muted and re
 - Interactive demos (BPM grid, EQ, crossfader, phrasing, Camelot, waveform) are schematic simulations, not screenshots.
 - Keyboard shortcuts: https://www.virtualdj.com/manuals/hardware/keyboard/default.html
 - Font: Heebo (SIL Open Font License).
+
+- 3D "lab" layers and effects (css/fx3d.css, js/fx3d.js) use crops (deck A, mixer, deck B, browser, waveform) of the same window-only VirtualDJ captures above; no full-screen captures are used.
+- Lesson facts, quizzes and shortcuts were checked against public guides (official VirtualDJ manual/keyboard mapping at virtualdj.com and other DJ tutorials); each lesson's "מקורות" section lists the links and access date (2026-11-03). Items not confirmed on Pini's build are marked "לבדוק בתוכנה".

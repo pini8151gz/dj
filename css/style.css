@@ -115,3 +115,5 @@ figure.real .src{color:#8a93b8;font-size:.85em}
 .tb button[aria-selected=true]{background:#ffd166;color:#000}
 .tabs .tp{display:none;width:100%;border-radius:8px}.tabs .tp.on{display:block;animation:rin .4s}
 @media (prefers-reduced-motion:reduce){.hs span,.sb i,.sd .pulse,figure.real{animation:none}}
+
+.data,.srcs{margin:1.5rem 0;padding:1rem 1.2rem;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}.data li,.srcs li{margin:.35rem 0;line-height:1.7}.srcs a{word-break:break-word}.vchk{display:inline-block;font-size:.75em;padding:0 .45em;margin-inline-start:.3em;border-radius:6px;background:#ffb02033;color:#ffcf70;border:1px solid #ffb02066}

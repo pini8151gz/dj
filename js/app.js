@@ -66,3 +66,16 @@ hv.addEventListener('play',setT);hv.addEventListener('pause',setT);hv.muted=true
 if(user)hv.play().catch(()=>setT());setT();tg.onclick=()=>{if(hv.paused){user=true;hv.play().catch(()=>{})}else{user=false;hv.pause()}};
 document.addEventListener('visibilitychange',()=>{if(document.hidden)hv.pause();else if(user)hv.play().catch(()=>{})})}
 upd();
+/* v3 real-UI demos */
+document.querySelectorAll('.hot').forEach(h=>{const hs=[...h.querySelectorAll('.hs')],t=h.querySelector('.hot-t'),d=h.querySelector('.hot-d');let i=-1,tm=null;
+const sel=n=>{i=(n+hs.length)%hs.length;hs.forEach((b,j)=>b.classList.toggle('on',j==i));t.textContent=(i+1)+'. '+hs[i].dataset.t;d.textContent=hs[i].dataset.d};
+hs.forEach((b,j)=>{b.addEventListener('mouseenter',()=>sel(j));b.addEventListener('focus',()=>sel(j));b.addEventListener('click',()=>{stop();sel(j)})});
+const tb=h.querySelector('.hot-tour');const stop=()=>{clearInterval(tm);tm=null;tb.textContent='▶ סיור מודרך אוטומטי'};
+tb.onclick=()=>{if(tm)return stop();sel(i+1);tm=setInterval(()=>{if(i>=hs.length-1)return stop();sel(i+1)},2600);tb.textContent='⏸ עצור סיור'};
+h.querySelector('.hot-next').onclick=()=>{stop();sel(i+1)};h.querySelector('.hot-prev').onclick=()=>{stop();sel(i-1)}});
+document.querySelectorAll('[data-demo=stems]').forEach(w=>{const o=w.querySelector('.stem-o');w.querySelectorAll('.stem').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!='true';b.setAttribute('aria-pressed',on);w.querySelector('.sb[data-s="'+b.dataset.s+'"]').classList.toggle('off',on);const off=[...w.querySelectorAll('.stem[aria-pressed=true]')].map(x=>x.dataset.s);
+o.textContent=!off.length?'כל הערוצים פעילים':(off.length==1&&off[0]=='Vocal')?'בלי שירה = Instrumental (מושלם לקריוקי)':(off.length==4&&!off.includes('Vocal'))?'רק שירה = Acapella':'מושתק: '+off.join(', ')})});
+document.querySelectorAll('[data-demo=sync]').forEach(w=>{const g=w.querySelector('.sync-wrap'),a=w.querySelector('.sd.a .sv'),o=w.querySelector('.sync-o');
+w.querySelector('.sync-go').onclick=()=>{let v=65.93,st=0;const T=setInterval(()=>{st++;v=65.93*(1+st/30);a.textContent=v.toFixed(2);if(st>=30){clearInterval(T);a.textContent='131.86';g.classList.add('synced');o.textContent='✓ מסונכרן: שני הדקים ב-131.86 BPM והנקודות מהבהבות יחד'}},30)};
+w.querySelector('.sync-reset').onclick=()=>{g.classList.remove('synced');a.textContent='65.93';o.textContent=''}});
+document.querySelectorAll('[data-demo=tabs]').forEach(w=>{const bs=w.querySelectorAll('[role=tab]'),ps=w.querySelectorAll('.tp');bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.setAttribute('aria-selected',i==j));ps.forEach((p,j)=>p.classList.toggle('on',i==j))})});
